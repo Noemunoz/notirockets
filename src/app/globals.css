@@ -4,6 +4,16 @@
 --color-lime-400: #eeff41;
 --color-lime-500: #c6ff00;
 }
+
+/* UTILIDAD TAILWIND V4: Ocultar barras de scroll nativamente */
+@utility scrollbar-hide {
+scrollbar-width: none;
+-ms-overflow-style: none;
+&::-webkit-scrollbar {
+display: none;
+}
+}
+
 /* Opcional: Configuraciones base para el fondo oscuro */
 :root {
 --background: #0a0a0c;
@@ -13,9 +23,4 @@
 body {
 background-color: var(--background);
 color: var(--foreground);
-}
-
-/* Evitamos que el scroll se vea feo en el menú */
-.scrollbar-none::-webkit-scrollbar {
-display: none;
 }

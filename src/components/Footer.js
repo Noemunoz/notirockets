@@ -10,7 +10,8 @@ function Footer() {
 
   return (
     <footer className="bg-[#16161a] border-t border-gray-800 mt-20 text-gray-400 text-sm">
-      <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Cambiamos a 4 columnas para que quepa la nueva sección del Crew */}
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         
         {/* LOGO Y DESCRIPCIÓN (SLOGAN ACTUALIZADO) */}
         <div className="flex flex-col items-start gap-4">
@@ -38,16 +39,26 @@ function Footer() {
             <Link href="/?seccion=Arte" className="hover:text-lime-400 transition-colors">Arte</Link>
             <Link href="/?seccion=Cultura" className="hover:text-lime-400 transition-colors">Cultura</Link>
             <Link href="/?seccion=Misceláneo" className="hover:text-lime-400 transition-colors">Misceláneo</Link>
-            <Link href="/?seccion=Columnas" className="hover:text-lime-400 transition-colors">Columnas</Link>
-            <Link href="/crew" className="text-lime-500 hover:text-white transition-colors">El Crew</Link>
           </div>
         </div>
 
-        {/* COMUNIDAD Y REDES SOCIALES */}
+        {/* EL CREW (NUEVA COLUMNA INDEPENDIENTE) */}
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
             <span className="h-3 w-1 bg-lime-500 rounded"></span>
-            Comunidad
+            La Tripulación
+          </h4>
+          <p className="text-xs text-gray-500 mb-3 leading-relaxed">Conoce a los redactores, fotógrafos y mentes creativas detrás de Notirockets.</p>
+          <Link href="/crew" className="inline-block bg-[#121216] border border-gray-700 hover:border-lime-500 text-white hover:text-lime-400 px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all w-max shadow-lg">
+            Conoce al Crew 🚀
+          </Link>
+        </div>
+
+        {/* REDES SOCIALES */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
+            <span className="h-3 w-1 bg-lime-500 rounded"></span>
+            Redes Sociales
           </h4>
           <p className="text-xs text-gray-500 mb-2">Síguenos en nuestras plataformas oficiales:</p>
           <div className="flex flex-wrap gap-3">

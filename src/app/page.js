@@ -274,34 +274,6 @@ const SeccionMiscelaneo = ({ notas }) => {
   );
 };
 
-const SeccionColumnas = ({ notas }) => {
-  if (!notas || notas.length === 0) return null;
-  return (
-    <section className="border-t border-gray-800 pt-16">
-      <SectionHeader titulo="Columnas" seccion="Columnas" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {notas.map(nota => (
-          <Link key={nota.id} href={`/nota/${nota.id}`} className="group flex flex-col bg-[#121216] border-t-4 border-lime-500 p-6 rounded-b-xl hover:bg-gray-800 transition-colors shadow-lg h-full">
-            <span className="text-lime-500 font-bold uppercase text-xs tracking-widest mb-4 block">Opinión</span>
-            <h4 className="font-bold text-white text-lg leading-snug mb-4 group-hover:text-lime-400 transition-colors">
-              &quot;{nota.titulo}&quot;
-            </h4>
-            <div className="mt-auto flex items-center gap-3 border-t border-gray-800 pt-4">
-              <div className="w-10 h-10 rounded-full bg-gray-700 overflow-hidden shrink-0 border border-gray-600">
-                <img src={nota.imagen} alt={nota.autor} className="w-full h-full object-cover grayscale" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white text-xs font-bold uppercase tracking-wider">{nota.autor || 'Redacción'}</span>
-                <span className="text-gray-500 text-[10px] uppercase">Columnista</span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 /* =====================================================================
    COMPONENTE PRINCIPAL (RUTEO Y FILTRADO)
    ===================================================================== */
@@ -417,7 +389,6 @@ function FeedNoticias() {
   const notasDeArte = restoParaPortada.filter(n => n.categoria === 'Arte').slice(0, 3);
   const notasDeCultura = restoParaPortada.filter(n => n.categoria === 'Cultura').slice(0, 4);
   const notasDeMiscelaneo = restoParaPortada.filter(n => n.categoria === 'Misceláneo').slice(0, 4);
-  const notasDeColumnas = restoParaPortada.filter(n => n.categoria === 'Columnas').slice(0, 4);
 
   return (
     <div className="py-8 max-w-7xl mx-auto px-4 space-y-24">
@@ -430,7 +401,6 @@ function FeedNoticias() {
       <SeccionArte notas={notasDeArte} />
       <SeccionCultura notas={notasDeCultura} />
       <SeccionMiscelaneo notas={notasDeMiscelaneo} />
-      <SeccionColumnas notas={notasDeColumnas} />
     </div>
   );
 }

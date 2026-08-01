@@ -133,7 +133,6 @@ export default function NotaMetadata({ nota, setNota }) {
                 <option value="Arte">Arte</option>
                 <option value="Cultura">Cultura</option>
                 <option value="Misceláneo">Misceláneo</option>
-                <option value="Columnas">Columnas</option>
 
                 <optgroup label="── MÚSICA ──" className="font-bold text-lime-500 bg-black">
                   <option value="Noticias (Música)" className="text-white font-normal bg-[#16161a]">Noticias</option>
