@@ -39,6 +39,7 @@ function Footer() {
             <Link href="/?seccion=Cultura" className="hover:text-lime-400 transition-colors">Cultura</Link>
             <Link href="/?seccion=Misceláneo" className="hover:text-lime-400 transition-colors">Misceláneo</Link>
             <Link href="/?seccion=Columnas" className="hover:text-lime-400 transition-colors">Columnas</Link>
+            <Link href="/crew" className="text-lime-500 hover:text-white transition-colors">El Crew</Link>
           </div>
         </div>
 

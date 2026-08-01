@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaXTwitter, FaThreads } from 'react-icons/fa6';
-import logoNR from "../assets/logo_nr.png"; 
+import logoNR from "../assets/logo_nr.jpg"; 
 
 const SearchBar = () => {
   const router = useRouter();
@@ -41,6 +41,7 @@ function NavbarContent() {
   const [subMenuMovil, setSubMenuMovil] = useState(null); 
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   
   const categoriaActualURL = searchParams.get('categoria');
   const seccionActualURL = searchParams.get('seccion');
@@ -86,7 +87,8 @@ function NavbarContent() {
     { nombre: "Arte", ruta: "/?seccion=Arte" },
     { nombre: "Cultura", ruta: "/?seccion=Cultura" },
     { nombre: "Misceláneo", ruta: "/?seccion=Misceláneo" },
-    { nombre: "Columnas", ruta: "/?seccion=Columnas" }
+    { nombre: "Columnas", ruta: "/?seccion=Columnas" },
+    { nombre: "El Crew", ruta: "/crew" }
   ];
 
   const seccionActivaObj = menuEstructura.find(item => 
@@ -151,7 +153,11 @@ function NavbarContent() {
         <div className="hidden lg:block border-t border-gray-800 bg-[#0f0f12]">
           <nav className="max-w-7xl mx-auto px-2 flex items-center justify-center gap-4 xl:gap-7">
             {menuEstructura.map((item) => {
-              const estaActivo = seccionActivaObj?.nombre === item.nombre || (item.nombre === "Inicio" && !seccionActualURL && !categoriaActualURL);
+              const estaActivo = 
+                (seccionActivaObj?.nombre === item.nombre && pathname === "/") || 
+                (item.nombre === "Inicio" && pathname === "/" && !seccionActualURL && !categoriaActualURL) ||
+                (item.nombre === "El Crew" && pathname === "/crew");
+
               return (
                 <button
                   key={item.nombre}
