@@ -5,7 +5,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaXTwitter, FaThreads } from 'react-icons/fa6';
-import logoNR from "../assets/logo_nr.jpg"; 
+import logoNR from "../assets/logo_nr.svg"; 
 
 const SearchBar = () => {
   const router = useRouter();

@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link'; 
 import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaXTwitter, FaThreads } from 'react-icons/fa6';
-import logoNR from '../assets/logo_nr.png'; 
+import logoNR from '../assets/logo_nr.svg'; 
 
 function Footer() {
   const añoActual = new Date().getFullYear();
