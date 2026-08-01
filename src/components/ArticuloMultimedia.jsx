@@ -2,41 +2,49 @@
 
 import React from 'react';
 
-const ArticuloMultimedia = ({ link }) => {
-  if (!link) return null;
+const ArticuloMultimedia = ({ nota }) => {
+  const { spotifyLink, youtubeLink } = nota;
 
-  const esSpotify = link.includes('spotify.com');
-  const esYouTube = link.includes('youtube.com') || link.includes('youtu.be');
+  if (!spotifyLink && !youtubeLink) return null;
 
-  let embedUrl = link;
+  const renderIframe = (link, tipo) => {
+    let embedUrl = link;
+    let height = "352";
 
-  if (esSpotify) {
-    embedUrl = link.replace('open.spotify.com', 'open.spotify.com/embed');
-  } else if (esYouTube) {
-    if (link.includes('watch?v=')) {
-      embedUrl = link.replace('watch?v=', 'embed/');
-    } else if (link.includes('youtu.be/')) {
-      embedUrl = link.replace('youtu.be/', 'www.youtube.com/embed/');
+    if (tipo === 'spotify') {
+      embedUrl = link.replace('open.spotify.com', 'open.spotify.com/embed');
+    } else if (tipo === 'youtube') {
+      height = "400";
+      if (link.includes('watch?v=')) {
+        embedUrl = link.replace('watch?v=', 'embed/');
+      } else if (link.includes('youtu.be/')) {
+        embedUrl = link.replace('youtu.be/', 'www.youtube.com/embed/');
+      }
     }
-  }
 
-  return (
-    <section className="mt-12 border-t border-gray-800 pt-12">
-      <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8 flex items-center gap-3">
-        <span className="h-6 w-1.5 bg-lime-500 rounded"></span>
-        Multimedia
-      </h3>
+    return (
       <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-800 bg-[#0f0f12]">
         <iframe 
           src={embedUrl} 
           width="100%" 
-          height={esSpotify ? "352" : "400"} 
+          height={height} 
           frameBorder="0" 
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
           loading="lazy"
           className="w-full"
         ></iframe>
       </div>
+    );
+  };
+
+  return (
+    <section className="mt-12 border-t border-gray-800 pt-12 space-y-8">
+      <h3 className="text-2xl font-black text-white uppercase tracking-tight flex items-center gap-3">
+        <span className="h-6 w-1.5 bg-lime-500 rounded"></span>
+        Multimedia
+      </h3>
+      {youtubeLink && renderIframe(youtubeLink, 'youtube')}
+      {spotifyLink && renderIframe(spotifyLink, 'spotify')}
     </section>
   );
 };

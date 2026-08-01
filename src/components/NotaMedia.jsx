@@ -29,13 +29,22 @@ export default function NotaMedia({ nota, setNota, manejarGaleriaSubida }) {
           onGaleriaSubida={manejarGaleriaSubida} 
       />
       
-      <input 
-        type="text"
-        value={nota.spotifyLink} 
-        onChange={(e) => setNota({...nota, spotifyLink: e.target.value})} 
-        placeholder="Link de Spotify o YouTube (Ej: open.spotify.com/album/...)" 
-        className="w-full bg-[#16161a] border border-gray-700 rounded p-3 text-white outline-none focus:border-lime-500 transition-colors shadow-inner" 
-      />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input 
+          type="text"
+          value={nota.spotifyLink || ''} 
+          onChange={(e) => setNota({...nota, spotifyLink: e.target.value})} 
+          placeholder="Link de Spotify (Álbum/Playlist)" 
+          className="w-full bg-[#16161a] border border-gray-700 rounded p-3 text-white outline-none focus:border-lime-500 transition-colors shadow-inner" 
+        />
+        <input 
+          type="text"
+          value={nota.youtubeLink || ''} 
+          onChange={(e) => setNota({...nota, youtubeLink: e.target.value})} 
+          placeholder="Link de YouTube (Video)" 
+          className="w-full bg-[#16161a] border border-gray-700 rounded p-3 text-white outline-none focus:border-lime-500 transition-colors shadow-inner" 
+        />
+      </div>
     </div>
   );
 }

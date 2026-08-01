@@ -63,7 +63,7 @@ function PaginaNota({ id }) {
         </div>
       </div>
 
-      <ArticuloMultimedia link={nota.spotifyLink} />
+      <ArticuloMultimedia nota={nota} />
       <ArticuloGaleria galeria={nota.galeria} />
     </article>
   );
