@@ -2,18 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link'; 
-import { FaFacebook, FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
 import { colaboradores } from '../data/colaboradores'; // Importamos la DB del Crew
 
-const ArticuloHeader = ({ nota, urlActual }) => {
+const ArticuloHeader = ({ nota }) => {
   const [pantallaCompleta, setPantallaCompleta] = useState(false);
-
-  const tituloCompartir = encodeURIComponent(`¡Checa esta nota en Notirockets!: ${nota.titulo}`);
-  const urlCompartir = encodeURIComponent(urlActual);
-
-  const linkFacebook = `https://www.facebook.com/sharer/sharer.php?u=${urlCompartir}`;
-  const linkX = `https://twitter.com/intent/tweet?url=${urlCompartir}&text=${tituloCompartir}`;
-  const linkWhatsApp = `https://api.whatsapp.com/send?text=${tituloCompartir}%20${urlCompartir}`;
 
   // Adaptar si es una nota vieja (string) o nota nueva (array)
   const listaAutores = Array.isArray(nota.autor) 
@@ -62,25 +54,12 @@ const ArticuloHeader = ({ nota, urlActual }) => {
                })}
             </div>
           </div>
-
-          <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Compartir:</span>
-            <a href={linkFacebook} target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:scale-110 transition-transform">
-              <FaFacebook size={26} />
-            </a>
-            <a href={linkX} target="_blank" rel="noopener noreferrer" className="text-white hover:scale-110 transition-transform">
-              <FaXTwitter size={26} />
-            </a>
-            <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:scale-110 transition-transform">
-              <FaWhatsapp size={26} />
-            </a>
-          </div>
         </div>
         
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl mt-8 border border-gray-800 bg-[#0f0f12] cursor-pointer group" onClick={() => setPantallaCompleta(true)}>
-          <img src={nota.imagen} alt={nota.titulo} className="w-full aspect-video object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500" />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
-             <span className="bg-lime-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg shadow-lime-500/30">Ampliar</span>
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl mt-8 border border-gray-800 bg-[#0f0f12] cursor-pointer group flex justify-center" onClick={() => setPantallaCompleta(true)}>
+          <img src={nota.imagen} alt={nota.titulo} className="w-full h-auto max-h-[85vh] object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+             <span className="bg-lime-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg shadow-lime-500/30">Ampliar Portada</span>
           </div>
         </div>
       </header>

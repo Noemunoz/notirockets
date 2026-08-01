@@ -44,7 +44,7 @@ const SeccionHero = ({ notaPrincipal }) => {
         <div className="aspect-video w-full overflow-hidden">
            <img src={notaPrincipal.imagen} alt={notaPrincipal.titulo} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" />
         </div>
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 md:p-12">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 md:p-12">
            <span className="self-start bg-lime-500 text-black text-xs font-black uppercase tracking-widest px-3 py-1 rounded shadow-lg mb-4">
              {limpiarCategoria(notaPrincipal.categoria)}
            </span>
@@ -84,7 +84,6 @@ const SeccionMusica = ({ notas }) => {
         )}
         {notas.length > 1 && (
           <div className="lg:col-span-4 flex flex-col gap-6 lg:border-l lg:border-gray-800 lg:pl-8">
-            {/* Ahora mapeamos las 4 notas restantes para llenar el hueco visual */}
             {notas.slice(1, 5).map(nota => (
               <Link key={nota.id} href={`/nota/${nota.id}`} className="group flex gap-4 items-center">
                 <div className="aspect-video w-32 shrink-0 overflow-hidden bg-gray-900 rounded-md border border-gray-800">
@@ -155,23 +154,43 @@ const SeccionTeatro = ({ notas }) => {
   );
 };
 
-const SeccionAgenda = ({ notas }) => {
+const SeccionArte = ({ notas }) => {
   if (!notas || notas.length === 0) return null;
   return (
     <section className="border-t border-gray-800 pt-16">
-      <SectionHeader titulo="Agenda" seccion="Agenda" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {notas.map(nota => (
-          <Link key={nota.id} href={`/nota/${nota.id}`} className="group relative overflow-hidden rounded-xl bg-gray-900 h-80 w-full border border-gray-800 shadow-xl">
-            <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover brightness-50 group-hover:brightness-90 group-hover:scale-105 transition-all duration-700 ease-out" />
-            <div className="absolute inset-0 flex flex-col justify-end p-5 bg-linear-to-t from-black via-black/40 to-transparent">
-              <span className="self-start bg-lime-500 text-black font-black uppercase text-[10px] tracking-widest px-2 py-1 rounded shadow-lg mb-3">
+      <SectionHeader titulo="Arte" seccion="Arte" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {notas.map((nota, idx) => (
+          <Link key={nota.id} href={`/nota/${nota.id}`} className={`group relative overflow-hidden rounded-xl bg-gray-900 border border-gray-800 shadow-xl ${idx === 0 ? 'md:col-span-2 aspect-video' : 'aspect-square md:aspect-video'}`}>
+            <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out" />
+            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black via-black/40 to-transparent">
+              <span className="self-start bg-black/60 backdrop-blur-sm text-lime-500 border border-lime-500 font-bold uppercase text-xs tracking-widest px-3 py-1 rounded-full mb-3 shadow-lg">
                 {limpiarCategoria(nota.categoria)}
               </span>
-              <h4 className="font-black text-white text-lg leading-tight line-clamp-4 group-hover:text-lime-400 transition-colors drop-shadow-md">
+              <h4 className={`font-black text-white leading-tight drop-shadow-md group-hover:text-lime-400 transition-colors ${idx === 0 ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'}`}>
                 {nota.titulo}
               </h4>
             </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const SeccionDanza = ({ notas }) => {
+  if (!notas || notas.length === 0) return null;
+  return (
+    <section className="border-t border-gray-800 pt-16">
+      <SectionHeader titulo="Danza" seccion="Danza" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {notas.map(nota => (
+          <Link key={nota.id} href={`/nota/${nota.id}`} className="group relative h-96 overflow-hidden rounded-xl bg-gray-900 border border-gray-800">
+             <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75 group-hover:brightness-100" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
+                <span className="text-lime-500 font-bold uppercase text-xs tracking-widest mb-2 border-l-2 border-lime-500 pl-2 block">{limpiarCategoria(nota.categoria)}</span>
+                <h4 className="font-bold text-white text-xl leading-snug group-hover:text-lime-400 transition-colors">{nota.titulo}</h4>
+             </div>
           </Link>
         ))}
       </div>
@@ -206,50 +225,6 @@ const SeccionCultura = ({ notas }) => {
   );
 };
 
-const SeccionDanza = ({ notas }) => {
-  if (!notas || notas.length === 0) return null;
-  return (
-    <section className="border-t border-gray-800 pt-16">
-      <SectionHeader titulo="Danza" seccion="Danza" />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {notas.map(nota => (
-          <Link key={nota.id} href={`/nota/${nota.id}`} className="group relative h-96 overflow-hidden rounded-xl bg-gray-900 border border-gray-800">
-             <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 brightness-75 group-hover:brightness-100" />
-             <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6">
-                <span className="text-lime-500 font-bold uppercase text-xs tracking-widest mb-2 border-l-2 border-lime-500 pl-2 block">{limpiarCategoria(nota.categoria)}</span>
-                <h4 className="font-bold text-white text-xl leading-snug group-hover:text-lime-400 transition-colors">{nota.titulo}</h4>
-             </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-};
-
-const SeccionArte = ({ notas }) => {
-  if (!notas || notas.length === 0) return null;
-  return (
-    <section className="border-t border-gray-800 pt-16">
-      <SectionHeader titulo="Arte" seccion="Arte" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {notas.map((nota, idx) => (
-          <Link key={nota.id} href={`/nota/${nota.id}`} className={`group relative overflow-hidden rounded-xl bg-gray-900 border border-gray-800 shadow-xl ${idx === 0 ? 'md:col-span-2 aspect-video' : 'aspect-square md:aspect-video'}`}>
-            <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover brightness-75 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out" />
-            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 bg-linear-to-t from-black via-black/40 to-transparent">
-              <span className="self-start bg-black/60 backdrop-blur-sm text-lime-500 border border-lime-500 font-bold uppercase text-xs tracking-widest px-3 py-1 rounded-full mb-3 shadow-lg">
-                {limpiarCategoria(nota.categoria)}
-              </span>
-              <h4 className={`font-black text-white leading-tight drop-shadow-md group-hover:text-lime-400 transition-colors ${idx === 0 ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'}`}>
-                {nota.titulo}
-              </h4>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 const SeccionMiscelaneo = ({ notas }) => {
   if (!notas || notas.length === 0) return null;
   return (
@@ -264,6 +239,30 @@ const SeccionMiscelaneo = ({ notas }) => {
             <div className="p-5 flex flex-col grow">
               <span className="text-lime-500 font-bold uppercase text-xs tracking-widest mb-3 border-b border-gray-800 pb-2">{limpiarCategoria(nota.categoria)}</span>
               <h4 className="font-bold text-white text-base leading-snug line-clamp-4 group-hover:text-lime-400 transition-colors">
+                {nota.titulo}
+              </h4>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const SeccionAgenda = ({ notas }) => {
+  if (!notas || notas.length === 0) return null;
+  return (
+    <section className="border-t border-gray-800 pt-16">
+      <SectionHeader titulo="Agenda" seccion="Agenda" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {notas.map(nota => (
+          <Link key={nota.id} href={`/nota/${nota.id}`} className="group relative overflow-hidden rounded-xl bg-gray-900 h-80 w-full border border-gray-800 shadow-xl">
+            <img src={nota.imagen} alt={nota.titulo} className="w-full h-full object-cover brightness-50 group-hover:brightness-90 group-hover:scale-105 transition-all duration-700 ease-out" />
+            <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-black via-black/40 to-transparent">
+              <span className="self-start bg-lime-500 text-black font-black uppercase text-[10px] tracking-widest px-2 py-1 rounded shadow-lg mb-3">
+                {limpiarCategoria(nota.categoria)}
+              </span>
+              <h4 className="font-black text-white text-lg leading-tight line-clamp-4 group-hover:text-lime-400 transition-colors drop-shadow-md">
                 {nota.titulo}
               </h4>
             </div>
@@ -384,23 +383,23 @@ function FeedNoticias() {
   const notasDeMusica = restoParaPortada.filter(n => esMusica(n.categoria)).slice(0, 5); 
   const notasDeCine = restoParaPortada.filter(n => esCine(n.categoria)).slice(0, 3);
   const notasDeTeatro = restoParaPortada.filter(n => esTeatro(n.categoria)).slice(0, 4);
-  const notasDeAgenda = restoParaPortada.filter(n => n.categoria === 'Agenda').slice(0, 4);
-  const notasDeDanza = restoParaPortada.filter(n => n.categoria === 'Danza').slice(0, 3);
   const notasDeArte = restoParaPortada.filter(n => n.categoria === 'Arte').slice(0, 3);
+  const notasDeDanza = restoParaPortada.filter(n => n.categoria === 'Danza').slice(0, 3);
   const notasDeCultura = restoParaPortada.filter(n => n.categoria === 'Cultura').slice(0, 4);
   const notasDeMiscelaneo = restoParaPortada.filter(n => n.categoria === 'Misceláneo').slice(0, 4);
+  const notasDeAgenda = restoParaPortada.filter(n => n.categoria === 'Agenda').slice(0, 4);
 
   return (
     <div className="py-8 max-w-7xl mx-auto px-4 space-y-24">
       <SeccionHero notaPrincipal={notaPrincipal} />
       <SeccionMusica notas={notasDeMusica} />
-      <SeccionAgenda notas={notasDeAgenda} />
       <SeccionCine notas={notasDeCine} />
       <SeccionTeatro notas={notasDeTeatro} />
-      <SeccionDanza notas={notasDeDanza} />
       <SeccionArte notas={notasDeArte} />
+      <SeccionDanza notas={notasDeDanza} />
       <SeccionCultura notas={notasDeCultura} />
       <SeccionMiscelaneo notas={notasDeMiscelaneo} />
+      <SeccionAgenda notas={notasDeAgenda} />
     </div>
   );
 }

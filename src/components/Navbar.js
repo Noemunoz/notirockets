@@ -57,7 +57,6 @@ function NavbarContent() {
         { nombre: "Coberturas", ruta: "/?categoria=Coberturas especiales" }
       ]
     },
-    { nombre: "Agenda", ruta: "/?seccion=Agenda" },
     { 
       nombre: "Cine", 
       ruta: "/?seccion=Cine",
@@ -80,10 +79,11 @@ function NavbarContent() {
         { nombre: "Entrevistas", ruta: "/?categoria=Entrevistas (Teatro)" }
       ]
     },
-    { nombre: "Danza", ruta: "/?seccion=Danza" },
     { nombre: "Arte", ruta: "/?seccion=Arte" },
+    { nombre: "Danza", ruta: "/?seccion=Danza" },
     { nombre: "Cultura", ruta: "/?seccion=Cultura" },
-    { nombre: "Misceláneo", ruta: "/?seccion=Misceláneo" }
+    { nombre: "Misceláneo", ruta: "/?seccion=Misceláneo" },
+    { nombre: "Agenda", ruta: "/?seccion=Agenda" }
   ];
 
   const seccionActivaObj = menuEstructura.find(item => 
@@ -97,7 +97,7 @@ function NavbarContent() {
       {/* BARRA NEGRA PRINCIPAL */}
       <div className="bg-[#16161a] shadow-2xl border-b border-gray-800">
         
-        {/* TOP BAR: Logo, Redes y Buscador (Ahora se acomoda en móviles) */}
+        {/* TOP BAR: Logo, Redes y Buscador */}
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center gap-3">
           <div className="flex items-center cursor-pointer group shrink-0" onClick={() => router.push('/')}>
             <Image 
@@ -140,9 +140,8 @@ function NavbarContent() {
           </div>
         </div>
 
-        {/* BOTTOM BAR: Menú Editorial (Scroll Horizontal en todas las pantallas) */}
+        {/* BOTTOM BAR: Menú Editorial (Scroll Horizontal) */}
         <div className="block border-t border-gray-800 bg-[#0f0f12]">
-          {/* Usamos scrollbar-hide ocultando la barra pero permitiendo deslizar */}
           <nav className="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-6 lg:gap-7 overflow-x-auto scrollbar-hide">
             {menuEstructura.map((item) => {
               const estaActivo = 
@@ -165,7 +164,7 @@ function NavbarContent() {
         </div>
       </div>
 
-      {/* BARRA BLANCA SECUNDARIA (También con Scroll Horizontal) */}
+      {/* BARRA BLANCA SECUNDARIA (Scroll Horizontal) */}
       {seccionActivaObj && seccionActivaObj.subcategorias && (
         <div className="block bg-white border-b border-gray-300 shadow-md">
           <div className="max-w-7xl mx-auto px-4 flex justify-start lg:justify-center items-center gap-8 py-3 overflow-x-auto scrollbar-hide">

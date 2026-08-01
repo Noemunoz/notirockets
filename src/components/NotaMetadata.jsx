@@ -128,12 +128,6 @@ export default function NotaMetadata({ nota, setNota }) {
               onChange={(e) => setNota({...nota, categoria: e.target.value})} 
               className="w-full bg-[#16161a] border border-gray-700 rounded p-3 text-white outline-none focus:border-lime-500 transition-colors shadow-inner"
             >
-                <option value="Agenda">Agenda</option>
-                <option value="Danza">Danza</option>
-                <option value="Arte">Arte</option>
-                <option value="Cultura">Cultura</option>
-                <option value="Misceláneo">Misceláneo</option>
-
                 <optgroup label="── MÚSICA ──" className="font-bold text-lime-500 bg-black">
                   <option value="Noticias (Música)" className="text-white font-normal bg-[#16161a]">Noticias</option>
                   <option value="Reseñas (Música)" className="text-white font-normal bg-[#16161a]">Reseñas</option>
@@ -158,6 +152,12 @@ export default function NotaMetadata({ nota, setNota }) {
                   <option value="Artículos (Teatro)" className="text-white font-normal bg-[#16161a]">Artículos</option>
                   <option value="Entrevistas (Teatro)" className="text-white font-normal bg-[#16161a]">Entrevistas</option>
                 </optgroup>
+
+                <option value="Arte">Arte</option>
+                <option value="Danza">Danza</option>
+                <option value="Cultura">Cultura</option>
+                <option value="Misceláneo">Misceláneo</option>
+                <option value="Agenda">Agenda</option>
             </select>
           </div>
           

@@ -10,10 +10,9 @@ function Footer() {
 
   return (
     <footer className="bg-[#16161a] border-t border-gray-800 mt-20 text-gray-400 text-sm">
-      {/* Cambiamos a 4 columnas para que quepa la nueva sección del Crew */}
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         
-        {/* LOGO Y DESCRIPCIÓN (SLOGAN ACTUALIZADO) */}
+        {/* LOGO Y DESCRIPCIÓN */}
         <div className="flex flex-col items-start gap-4">
           <div className="flex items-center">
             <img src={logoNR.src || logoNR} alt="Logo Notirockets" className="h-12 md:h-16 w-auto object-contain" />
@@ -23,26 +22,26 @@ function Footer() {
           </p>
         </div>
 
-        {/* SECCIONES (Sincronizadas con la página principal) */}
+        {/* SECCIONES */}
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
             <span className="h-3 w-1 bg-lime-500 rounded"></span>
-            Secciones
+            En Notirockets Hablamos De
           </h4>
           <div className="grid grid-cols-2 gap-2 text-xs uppercase font-bold tracking-wider">
             <Link href="/" className="hover:text-lime-400 transition-colors">Inicio</Link>
             <Link href="/?seccion=Música" className="hover:text-lime-400 transition-colors">Música</Link>
-            <Link href="/?seccion=Agenda" className="hover:text-lime-400 transition-colors">Agenda</Link>
             <Link href="/?seccion=Cine" className="hover:text-lime-400 transition-colors">Cine</Link>
             <Link href="/?seccion=Teatro" className="hover:text-lime-400 transition-colors">Teatro</Link>
-            <Link href="/?seccion=Danza" className="hover:text-lime-400 transition-colors">Danza</Link>
             <Link href="/?seccion=Arte" className="hover:text-lime-400 transition-colors">Arte</Link>
+            <Link href="/?seccion=Danza" className="hover:text-lime-400 transition-colors">Danza</Link>
             <Link href="/?seccion=Cultura" className="hover:text-lime-400 transition-colors">Cultura</Link>
             <Link href="/?seccion=Misceláneo" className="hover:text-lime-400 transition-colors">Misceláneo</Link>
+            <Link href="/?seccion=Agenda" className="hover:text-lime-400 transition-colors">Agenda</Link>
           </div>
         </div>
 
-        {/* EL CREW (NUEVA COLUMNA INDEPENDIENTE) */}
+        {/* EL CREW */}
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
             <span className="h-3 w-1 bg-lime-500 rounded"></span>
