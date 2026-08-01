@@ -66,7 +66,7 @@ function ListaNotas() {
       {noticias.length === 0 ? (
         <div className="bg-[#16161a] border border-gray-800 rounded-xl p-16 text-center shadow-lg">
           <p className="text-gray-400 text-lg uppercase tracking-wider font-bold">Aún no hay notas publicadas.</p>
-          <p className="text-gray-600 text-sm mt-2">Haz clic en "Nueva Nota" para empezar.</p>
+          <p className="text-gray-600 text-sm mt-2">Haz clic en &quot;Nueva Nota&quot; para empezar.</p>
         </div>
       ) : (
         <div className="space-y-5">
@@ -108,7 +108,6 @@ function ListaNotas() {
                 >
                   Editar
                 </Link>
-                {/* El botón de eliminar lo dejamos rojo por seguridad (Danger Action) */}
                 <button 
                   onClick={() => borrarNota(n.id)} 
                   className="flex-1 md:flex-none text-center bg-transparent border border-red-600 text-red-500 hover:bg-red-600 hover:text-white px-5 py-2.5 rounded text-xs font-black transition-all uppercase tracking-wider cursor-pointer"

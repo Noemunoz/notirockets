@@ -18,7 +18,7 @@ function Footer() {
             <img src={logoNR.src || logoNR} alt="Logo Notirockets" className="h-12 md:h-16 w-auto object-contain" />
           </div>
           <p className="text-gray-400 text-sm md:text-base leading-relaxed font-bold italic">
-            "Notirockets, Cultura en Orbita 🚀"
+            &quot;Notirockets, Cultura en Orbita 🚀&quot;
           </p>
         </div>
 

@@ -250,7 +250,6 @@ const SeccionArte = ({ notas }) => {
   );
 };
 
-// NUEVO: SECCIÓN MISCELÁNEO
 const SeccionMiscelaneo = ({ notas }) => {
   if (!notas || notas.length === 0) return null;
   return (
@@ -285,7 +284,7 @@ const SeccionColumnas = ({ notas }) => {
           <Link key={nota.id} href={`/nota/${nota.id}`} className="group flex flex-col bg-[#121216] border-t-4 border-lime-500 p-6 rounded-b-xl hover:bg-gray-800 transition-colors shadow-lg h-full">
             <span className="text-lime-500 font-bold uppercase text-xs tracking-widest mb-4 block">Opinión</span>
             <h4 className="font-bold text-white text-lg leading-snug mb-4 group-hover:text-lime-400 transition-colors">
-              "{nota.titulo}"
+              &quot;{nota.titulo}&quot;
             </h4>
             <div className="mt-auto flex items-center gap-3 border-t border-gray-800 pt-4">
               <div className="w-10 h-10 rounded-full bg-gray-700 overflow-hidden shrink-0 border border-gray-600">
@@ -415,9 +414,9 @@ function FeedNoticias() {
   const notasDeTeatro = restoParaPortada.filter(n => esTeatro(n.categoria)).slice(0, 4);
   const notasDeAgenda = restoParaPortada.filter(n => n.categoria === 'Agenda').slice(0, 4);
   const notasDeDanza = restoParaPortada.filter(n => n.categoria === 'Danza').slice(0, 3);
-  const notasDeArte = restoParaPortada.filter(n => n.categoria === 'Arte').slice(0, 3); // Cambiado a 3 para el mosaico perfecto
+  const notasDeArte = restoParaPortada.filter(n => n.categoria === 'Arte').slice(0, 3);
   const notasDeCultura = restoParaPortada.filter(n => n.categoria === 'Cultura').slice(0, 4);
-  const notasDeMiscelaneo = restoParaPortada.filter(n => n.categoria === 'Misceláneo').slice(0, 4); // Agregado
+  const notasDeMiscelaneo = restoParaPortada.filter(n => n.categoria === 'Misceláneo').slice(0, 4);
   const notasDeColumnas = restoParaPortada.filter(n => n.categoria === 'Columnas').slice(0, 4);
 
   return (

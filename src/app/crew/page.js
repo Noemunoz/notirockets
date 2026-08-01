@@ -14,7 +14,7 @@ export default function CrewPage() {
           La Tripulación de <span className="text-lime-500">Notirockets</span>
         </h1>
         <p className="text-gray-400 text-lg md:text-xl font-medium max-w-3xl mx-auto italic">
-          "Documentando la belleza del caos y llevando la cultura en órbita."
+          &quot;Documentando la belleza del caos y llevando la cultura en órbita.&quot;
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export default function CrewPage() {
               </h2>
               
               <p className="text-gray-400 text-sm leading-relaxed mb-6 grow border-l-2 border-gray-700 pl-4 group-hover:border-lime-500 transition-colors">
-                "{colab.bio}"
+                &quot;{colab.bio}&quot;
               </p>
               
               <div className="mt-auto pt-4 border-t border-gray-800">
