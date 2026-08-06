@@ -21,7 +21,7 @@ export default function NotaMetadata({ nota, setNota }) {
 
   // NUEVO: Identificar autores legacy (viejos) que no están en la lista actual ni son Redacción
   const autoresLegacy = autoresActuales.filter(
-    (nombre) => nombre !== 'Redacción Notirockets' && !colaboradores.some((c) => c.nombre === nombre)
+    (nombre) => nombre !== 'Editorial' && !colaboradores.some((c) => c.nombre === nombre)
   );
 
   return (
@@ -68,14 +68,14 @@ export default function NotaMetadata({ nota, setNota }) {
           {/* Opción Redacción General */}
           <button
              type="button"
-             onClick={() => manejarAutor('Redacción Notirockets')}
+             onClick={() => manejarAutor('Editorial')}
              className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer border ${
-               autoresActuales.includes('Redacción Notirockets') 
+               autoresActuales.includes('Editorial') 
                  ? 'bg-gray-700 text-white border-gray-500' 
                  : 'bg-[#16161a] text-gray-400 border-gray-700 hover:border-gray-500'
              }`}
            >
-             Redacción Notirockets
+             Editorial
            </button>
 
            {/* NUEVO: BOTONES ROJOS PARA BORRAR AUTORES VIEJOS (FANTASMAS) */}
@@ -128,6 +128,12 @@ export default function NotaMetadata({ nota, setNota }) {
               onChange={(e) => setNota({...nota, categoria: e.target.value})} 
               className="w-full bg-[#16161a] border border-gray-700 rounded p-3 text-white outline-none focus:border-lime-500 transition-colors shadow-inner"
             >
+                <option value="Agenda">Agenda</option>
+                <option value="Danza">Danza</option>
+                <option value="Arte">Arte</option>
+                <option value="Cultura">Cultura</option>
+                <option value="Misceláneo">Misceláneo</option>
+
                 <optgroup label="── MÚSICA ──" className="font-bold text-lime-500 bg-black">
                   <option value="Noticias (Música)" className="text-white font-normal bg-[#16161a]">Noticias</option>
                   <option value="Reseñas (Música)" className="text-white font-normal bg-[#16161a]">Reseñas</option>
@@ -152,12 +158,6 @@ export default function NotaMetadata({ nota, setNota }) {
                   <option value="Artículos (Teatro)" className="text-white font-normal bg-[#16161a]">Artículos</option>
                   <option value="Entrevistas (Teatro)" className="text-white font-normal bg-[#16161a]">Entrevistas</option>
                 </optgroup>
-
-                <option value="Arte">Arte</option>
-                <option value="Danza">Danza</option>
-                <option value="Cultura">Cultura</option>
-                <option value="Misceláneo">Misceláneo</option>
-                <option value="Agenda">Agenda</option>
             </select>
           </div>
           

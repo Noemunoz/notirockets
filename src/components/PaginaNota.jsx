@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig'; 
-import { FaFacebook, FaXTwitter, FaWhatsapp } from 'react-icons/fa6';
+import { FaFacebook, FaXTwitter, FaWhatsapp, FaLink } from 'react-icons/fa6';
 
 import ArticuloHeader from './ArticuloHeader';
 import ArticuloBody from './ArticuloBody';
@@ -13,6 +13,7 @@ import ArticuloGaleria from './ArticuloGaleria';
 function PaginaNota({ id }) {
   const [nota, setNota] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const [copiado, setCopiado] = useState(false);
 
   useEffect(() => {
     const obtenerNota = async () => {
@@ -42,29 +43,39 @@ function PaginaNota({ id }) {
   const linkX = `https://twitter.com/intent/tweet?url=${urlCompartir}&text=${tituloCompartir}`;
   const linkWhatsApp = `https://api.whatsapp.com/send?text=${tituloCompartir}%20${urlCompartir}`;
 
+  const copiarEnlace = () => {
+    navigator.clipboard.writeText(urlActual);
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 2000); // El mensaje desaparece a los 2 segundos
+  };
+
   return (
     <article className="max-w-4xl mx-auto px-4 py-10 w-full min-w-0 break-words leading-relaxed overflow-visible">
       <ArticuloHeader nota={nota} />
       <ArticuloBody extracto={nota.extracto} descripcion={nota.descripcion} />
       
-      {/* BOTONES DE COMPARTIR AL FINAL DE LA NOTA */}
-      <div className="flex flex-col items-center justify-center gap-5 mt-16 pt-10 border-t border-gray-800">
-        <span className="text-xs text-lime-500 uppercase tracking-widest font-black">Comparte esta nota:</span>
-        <div className="flex items-center gap-8">
-          <a href={linkFacebook} target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:scale-125 transition-transform" title="Compartir en Facebook">
-            <FaFacebook size={36} />
-          </a>
-          <a href={linkX} target="_blank" rel="noopener noreferrer" className="text-white hover:scale-125 transition-transform" title="Compartir en X">
-            <FaXTwitter size={36} />
-          </a>
-          <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:scale-125 transition-transform" title="Compartir en WhatsApp">
-            <FaWhatsapp size={36} />
-          </a>
-        </div>
-      </div>
-
       <ArticuloMultimedia nota={nota} />
       <ArticuloGaleria galeria={nota.galeria} />
+
+      {/* BOTONES DE COMPARTIR MOVIDOS HASTA EL FINAL */}
+      <div className="flex flex-col items-center justify-center gap-4 mt-16 pt-10 border-t border-gray-800">
+        <span className="text-[10px] text-lime-500 uppercase tracking-widest font-black">Comparte esta nota:</span>
+        <div className="flex items-center gap-6">
+          <a href={linkFacebook} target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:scale-125 transition-transform" title="Compartir en Facebook">
+            <FaFacebook size={26} />
+          </a>
+          <a href={linkX} target="_blank" rel="noopener noreferrer" className="text-white hover:scale-125 transition-transform" title="Compartir en X">
+            <FaXTwitter size={26} />
+          </a>
+          <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="text-[#25D366] hover:scale-125 transition-transform" title="Compartir en WhatsApp">
+            <FaWhatsapp size={26} />
+          </a>
+          <button onClick={copiarEnlace} className="text-gray-400 hover:text-lime-500 hover:scale-125 transition-all flex flex-col items-center justify-center relative cursor-pointer" title="Copiar enlace">
+            <FaLink size={24} />
+            {copiado && <span className="absolute -top-8 bg-lime-500 text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg">¡Copiado!</span>}
+          </button>
+        </div>
+      </div>
     </article>
   );
 }

@@ -10,7 +10,7 @@ const ArticuloHeader = ({ nota }) => {
   // Adaptar si es una nota vieja (string) o nota nueva (array)
   const listaAutores = Array.isArray(nota.autor) 
     ? nota.autor 
-    : (nota.autor ? nota.autor.split(',').map(a => a.trim()) : ['Redacción']);
+    : (nota.autor ? nota.autor.split(',').map(a => a.trim()) : ['Editorial']);
 
   return (
     <>

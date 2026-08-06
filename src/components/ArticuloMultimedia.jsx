@@ -38,11 +38,7 @@ const ArticuloMultimedia = ({ nota }) => {
   };
 
   return (
-    <section className="mt-12 border-t border-gray-800 pt-12 space-y-8">
-      <h3 className="text-2xl font-black text-white uppercase tracking-tight flex items-center gap-3">
-        <span className="h-6 w-1.5 bg-lime-500 rounded"></span>
-        Multimedia
-      </h3>
+    <section className="mt-8 space-y-8">
       {youtubeLink && renderIframe(youtubeLink, 'youtube')}
       {spotifyLink && renderIframe(spotifyLink, 'spotify')}
     </section>

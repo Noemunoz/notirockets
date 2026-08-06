@@ -13,7 +13,7 @@ export default function NotaEditor({ nota, setNota }) {
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'align': [] }],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      ['link'], 
+      ['link', 'image', 'video'], 
       ['clean']
     ],
   };

@@ -45,22 +45,20 @@ function Footer() {
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
             <span className="h-3 w-1 bg-lime-500 rounded"></span>
-            La Tripulación
+            El Crew Notirockets
           </h4>
-          <p className="text-xs text-gray-500 mb-3 leading-relaxed">Conoce a los redactores, fotógrafos y mentes creativas detrás de Notirockets.</p>
-          <Link href="/crew" className="inline-block bg-[#121216] border border-gray-700 hover:border-lime-500 text-white hover:text-lime-400 px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all w-max shadow-lg">
+          <Link href="/crew" className="inline-block mt-1 bg-[#121216] border border-gray-700 hover:border-lime-500 text-white hover:text-lime-400 px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all w-max shadow-lg">
             Conoce al Crew 🚀
           </Link>
         </div>
 
         {/* REDES SOCIALES */}
         <div className="flex flex-col gap-3">
-          <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2">
-            <span className="h-3 w-1 bg-lime-500 rounded"></span>
-            Redes Sociales
+          <h4 className="text-white font-black uppercase text-xs tracking-widest border-b border-gray-800 pb-2 flex items-center gap-2 leading-snug">
+            <span className="h-3 w-1 bg-lime-500 rounded shrink-0"></span>
+            Mantente al tanto en Notirockets! para más detalles.
           </h4>
-          <p className="text-xs text-gray-500 mb-2">Síguenos en nuestras plataformas oficiales:</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mt-1">
             <a href="https://www.facebook.com/share/1GTXV9YAQg/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full border border-gray-600 text-white hover:border-lime-500 hover:text-black hover:bg-lime-500 transition-all">
               <FaFacebookF size={14} />
             </a>

@@ -50,11 +50,11 @@ function NavbarContent() {
       ruta: "/?seccion=Música",
       subcategorias: [
         { nombre: "Noticias", ruta: "/?categoria=Noticias (Música)" },
-        { nombre: "Reseñas", ruta: "/?categoria=Reseñas (Música)" },
+        { nombre: "Entrevistas", ruta: "/?categoria=Entrevistas (Música)" },
         { nombre: "Conciertos", ruta: "/?categoria=Conciertos" },
         { nombre: "Artículos", ruta: "/?categoria=Artículos (Música)" },
-        { nombre: "Entrevistas", ruta: "/?categoria=Entrevistas (Música)" },
-        { nombre: "Coberturas", ruta: "/?categoria=Coberturas especiales" }
+        { nombre: "Coberturas", ruta: "/?categoria=Coberturas especiales" },
+        { nombre: "Reseñas", ruta: "/?categoria=Reseñas (Música)" }
       ]
     },
     { 
